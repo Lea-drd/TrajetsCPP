@@ -9,6 +9,8 @@
 //---------- Interface de la classe <Trajet> (fichier Trajet.h) ----------------
 #if ! defined ( TRAJET_H )
 #define TRAJET_H
+using namespace std;
+#include <cstring>
 
 
 //--------------------------------------------------- Interfaces utilisées
@@ -39,13 +41,13 @@ public:
 
 
 //-------------------------------------------- Constructeurs - destructeur
-    Trajet ( const Trajet & unTrajet );
+  /*  Trajet ( const Trajet & unTrajet );
     // Mode d'emploi (constructeur de copie) :
     //
     // Contrat :
-    //
+    //*/
 
-    Trajet ( );
+    Trajet (const char * vd, const char * va);
     // Mode d'emploi :
     //
     // Contrat :
@@ -63,7 +65,8 @@ protected:
 //----------------------------------------------------- Méthodes protégées
 
 //----------------------------------------------------- Attributs protégés
-
+char* villeDepart;
+char* villeArrivee;
 
 };
 

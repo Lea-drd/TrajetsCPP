@@ -11,9 +11,9 @@
 #define TRAJETSIMPLE_H
 using namespace std;
 #include <cstring>
-#include "Trajet.h"
 
 //--------------------------------------------------- Interfaces utilisées
+#include "Trajet.h"
 
 //------------------------------------------------------------- Constantes
 
@@ -42,11 +42,11 @@ public:
 
 
 //-------------------------------------------- Constructeurs - destructeur
-    TrajetSimple ( const TrajetSimple & unTrajetSimple );
+   /* TrajetSimple ( const TrajetSimple & unTrajetSimple );
     // Mode d'emploi (constructeur de copie) :
     //
     // Contrat :
-    //
+    //*/
 
     TrajetSimple ( const char* vd, const char* va, const char* mt );
     // Mode d'emploi :
@@ -67,8 +67,7 @@ protected:
 
 //----------------------------------------------------- Attributs protégés
 char* moyenTransport;
-char* villeDepart;
-char* villeArrivee;
+
 
 };
 

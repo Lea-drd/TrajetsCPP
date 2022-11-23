@@ -34,23 +34,27 @@ using namespace std;
 //------------------------------------------------- Surcharge d'opérateurs
 
 //-------------------------------------------- Constructeurs - destructeur
-Trajet::Trajet ( const Trajet & unTrajet )
+/*Trajet::Trajet ( const Trajet & unTrajet )
 // Algorithme :
 //
 {
 #ifdef MAP
     cout << "Appel au constructeur de copie de <Trajet>" << endl;
 #endif
-} //----- Fin de Trajet (constructeur de copie)
+} //----- Fin de Trajet (constructeur de copie)*/
 
 
-Trajet::Trajet ( )
+Trajet::Trajet ( const char *vd, const char *va )
 // Algorithme :
 //
 {
 #ifdef MAP
     cout << "Appel au constructeur de <Trajet>" << endl;
 #endif
+    villeDepart = new char[strlen(vd)+1];
+    strcpy(villeDepart, vd);
+    villeArrivee = new char[strlen(va)+1];
+    strcpy(villeArrivee, va);
 } //----- Fin de Trajet
 
 

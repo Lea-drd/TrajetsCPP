@@ -36,28 +36,24 @@ void TrajetSimple::Afficher() const
 
 
 //-------------------------------------------- Constructeurs - destructeur
-TrajetSimple::TrajetSimple ( const TrajetSimple & unTrajetSimple )
+/*TrajetSimple::TrajetSimple ( const TrajetSimple & unTrajetSimple )
 // Algorithme :
 //
 {
 #ifdef MAP
     cout << "Appel au constructeur de copie de <TrajetSimple>" << endl;
 #endif
-} //----- Fin de TrajetSimple (constructeur de copie)
+} //----- Fin de TrajetSimple (constructeur de copie)*/
 
 
 TrajetSimple::TrajetSimple (const char* vd, const char* va, const char* mt)
 // Algorithme :
 //
+    : Trajet(vd, va)
 {
 #ifdef MAP
     cout << "Appel au constructeur de <TrajetSimple>" << endl;
 #endif
-
-villeDepart = new char[strlen(vd)+1];
-strcpy(villeDepart, vd);
-villeArrivee = new char[strlen(va)+1];
-strcpy(villeArrivee, va);
 moyenTransport = new char[strlen(mt)+1];
 strcpy(moyenTransport, mt);
 
