@@ -11,6 +11,8 @@
 #define CATALOGUE_H
 
 //--------------------------------------------------- Interfaces utilisées
+#include "Trajet.h"
+#include "Liste.h"
 
 //------------------------------------------------------------- Constantes
 
@@ -34,6 +36,7 @@ public:
     // Contrat :
     //
 
+    void Catalogue::Ajouter(Trajet * trajet);
 
 //------------------------------------------------- Surcharge d'opérateurs
 
@@ -63,6 +66,7 @@ protected:
 //----------------------------------------------------- Méthodes protégées
 
 //----------------------------------------------------- Attributs protégés
+Liste * trajets;
 
 };
 

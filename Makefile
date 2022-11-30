@@ -4,6 +4,7 @@ FLAGS = -c -g # pour débug -c -g
 
 $(EXE): $(OBJETS)
 	g++ -o $(EXE) $(OBJETS)
+	rm *.o
 
 TrajetSimple: Try.o Trajet.o TrajetSimple.o
 	g++ -g -o TrajetSimple Trajet.o TrajetSimple.o Try.o

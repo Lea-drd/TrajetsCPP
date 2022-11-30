@@ -39,17 +39,15 @@ void Liste::Afficher() const{
     } 
 }
 
-void Liste::Ajouter(Trajet * trajet){
+void Liste::AddToQueue(Trajet * trajet){
     Maillon * leMaillon = new Maillon(trajet);
     ++nbMaillon;
     if(premierMaillon == nullptr)
     {
-        cout <<"Bienvenue au 1er maillon" << endl;
         premierMaillon = leMaillon;
     }
     else
     {
-        cout <<"Je set le dernier maillon\n" << endl;
         dernierMaillon->setNext(leMaillon);
     }
     dernierMaillon = leMaillon;
@@ -89,6 +87,23 @@ Liste::~Liste ( )
 #ifdef MAP
     cout << "Appel au destructeur de <Liste>" << endl;
 #endif
+
+    Maillon * cursMaillon = premierMaillon;
+    Maillon * nextMaillon = cursMaillon->getNext();
+    if(nextMaillon==nullptr){
+        delete cursMaillon;
+    }
+    else
+    {
+        while(nextMaillon->getNext()!=nullptr){
+            delete cursMaillon;
+            cursMaillon=nextMaillon;
+            nextMaillon=nextMaillon->getNext();
+        } 
+   
+    delete cursMaillon;
+    delete nextMaillon;
+    }
 } //----- Fin de ~Liste
 
 

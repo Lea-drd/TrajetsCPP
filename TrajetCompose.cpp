@@ -28,6 +28,10 @@ using namespace std;
 //{
 //} //----- Fin de Méthode
 
+    void TrajetCompose::Afficher() const
+    {
+        trajets->Afficher();
+    }
 
 //------------------------------------------------- Surcharge d'opérateurs
 
@@ -44,13 +48,15 @@ TrajetCompose::TrajetCompose ( const TrajetCompose & unTrajetCompose )
 } //----- Fin de TrajetCompose (constructeur de copie)
 */
 
-TrajetCompose::TrajetCompose ( )
+TrajetCompose::TrajetCompose (Liste * trs, int nbT)
 // Algorithme :
 //
 {
 #ifdef MAP
     cout << "Appel au constructeur de <TrajetCompose>" << endl;
 #endif
+    nbTrajets = nbT;
+    trajets = trs;
 } //----- Fin de TrajetCompose
 
 

@@ -28,7 +28,13 @@ using namespace std;
 //{
 //} //----- Fin de Méthode
 
+    void Ajouter(Trajet * trajet){
+        trajets->Ajouter(trajet);
+    }
 
+    void Afficher(Trajet * trajet){
+        trajets->Afficher(trajet);
+    }
 //------------------------------------------------- Surcharge d'opérateurs
 
 
@@ -50,6 +56,9 @@ Catalogue::Catalogue ( )
 #ifdef MAP
     cout << "Appel au constructeur de <Catalogue>" << endl;
 #endif
+
+trajets = new Liste();
+
 } //----- Fin de Catalogue
 
 
