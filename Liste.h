@@ -37,6 +37,7 @@ public:
     //
 
     void Afficher() const;
+    void AddToQueue(Trajet * trajet);
 
 
 //------------------------------------------------- Surcharge d'opérateurs
@@ -63,11 +64,6 @@ public:
     // Contrat :
     //
 
-    void Ajouter(Trajet * trajet);
-    // Mode d'emploi :
-    //
-    // Contrat :
-    //
 
 //------------------------------------------------------------------ PRIVE
 
