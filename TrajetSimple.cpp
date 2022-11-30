@@ -29,7 +29,7 @@ using namespace std;
 //} //----- Fin de Méthode
 void TrajetSimple::Afficher() const
 {
-    cout << "De " << villeDepart << " à " << villeArrivee << " en " << moyenTransport << "\r\n";
+    cout << "De " << villeDepart << " à " << villeArrivee << " en " << moyenTransport << "\r\n"; 
 }
 
 //------------------------------------------------- Surcharge d'opérateurs
@@ -48,15 +48,17 @@ void TrajetSimple::Afficher() const
 
 TrajetSimple::TrajetSimple (const char* vd, const char* va, const char* mt)
 // Algorithme :
-//
-    : Trajet(vd, va)
+//Construit un trajet tout seul
 {
 #ifdef MAP
     cout << "Appel au constructeur de <TrajetSimple>" << endl;
 #endif
-moyenTransport = new char[strlen(mt)+1];
-strcpy(moyenTransport, mt);
-
+    moyenTransport = new char[strlen(mt)+1];
+    strcpy(moyenTransport, mt);
+    villeDepart = new char[strlen(vd)+1];
+    strcpy(villeDepart, vd);
+    villeArrivee = new char[strlen(va)+1];
+    strcpy(villeArrivee, va);
 } //----- Fin de TrajetSimple
 
 
@@ -67,6 +69,9 @@ TrajetSimple::~TrajetSimple ( )
 #ifdef MAP
     cout << "Appel au destructeur de <TrajetSimple>" << endl;
 #endif
+    delete [] moyenTransport;
+    delete [] villeArrivee;
+    delete [] villeDepart;
 } //----- Fin de ~TrajetSimple
 
 

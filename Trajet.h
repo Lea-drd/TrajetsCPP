@@ -36,6 +36,7 @@ public:
     //
     // Contrat :
     //
+    virtual void Afficher() const = 0;
 
 //------------------------------------------------- Surcharge d'opérateurs
 
@@ -47,7 +48,7 @@ public:
     // Contrat :
     //*/
 
-    Trajet (const char * vd, const char * va);
+    Trajet ();
     // Mode d'emploi :
     //
     // Contrat :
@@ -65,8 +66,6 @@ protected:
 //----------------------------------------------------- Méthodes protégées
 
 //----------------------------------------------------- Attributs protégés
-char* villeDepart;
-char* villeArrivee;
 
 };
 

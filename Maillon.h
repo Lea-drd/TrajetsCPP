@@ -1,28 +1,30 @@
 /*************************************************************************
-                           TrajetCompose  -  description
+                           Maillon  -  description
                              -------------------
     début                : $DATE$
     copyright            : (C) $YEAR$ par $AUTHOR$
     e-mail               : $EMAIL$
 *************************************************************************/
 
-//---------- Interface de la classe <TrajetCompose> (fichier TrajetCompose.h) ----------------
-#if ! defined ( TRAJETCOMPOSE_H )
-#define TRAJETCOMPOSE_H
+//---------- Interface de la classe <Maillon> (fichier Maillon.h) ----------------
+#if ! defined ( MAILLON_H )
+#define MAILLON_H
+
+#include "Trajet.h"
 
 //--------------------------------------------------- Interfaces utilisées
-#include "Trajet.h"
+
 //------------------------------------------------------------- Constantes
 
 //------------------------------------------------------------------ Types
 
 //------------------------------------------------------------------------
-// Rôle de la classe <TrajetCompose>
+// Rôle de la classe <Maillon>
 //
 //
 //------------------------------------------------------------------------
 
-class TrajetCompose : public Trajet
+class Maillon
 {
 //----------------------------------------------------------------- PUBLIC
 
@@ -33,25 +35,23 @@ public:
     //
     // Contrat :
     //
-
-
-//------------------------------------------------- Surcharge d'opérateurs
-
+   Maillon * getNext();
+   void setNext(Maillon *);
 
 //-------------------------------------------- Constructeurs - destructeur
-    TrajetCompose ( const TrajetCompose & unTrajetCompose );
+    Maillon ( const Maillon & unMaillon );
     // Mode d'emploi (constructeur de copie) :
     //
     // Contrat :
     //
 
-    TrajetCompose ( );
+    Maillon (  Trajet * e);
     // Mode d'emploi :
     //
     // Contrat :
     //
 
-    virtual ~TrajetCompose ( );
+    virtual ~Maillon ( );
     // Mode d'emploi :
     //
     // Contrat :
@@ -63,10 +63,12 @@ protected:
 //----------------------------------------------------- Méthodes protégées
 
 //----------------------------------------------------- Attributs protégés
+   Trajet * elem;
+   Maillon * next;
 
 };
 
-//-------------------------------- Autres définitions dépendantes de <TrajetCompose>
+//-------------------------------- Autres définitions dépendantes de <Maillon>
 
-#endif // TrajetCompose
+#endif // XXX_H
 

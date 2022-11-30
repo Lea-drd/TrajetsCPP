@@ -9,8 +9,7 @@
 //---------- Interface de la classe <TrajetSimple> (fichier TrajetSimple.h) ----------------
 #if ! defined ( TRAJETSIMPLE_H )
 #define TRAJETSIMPLE_H
-using namespace std;
-#include <cstring>
+
 
 //--------------------------------------------------- Interfaces utilisées
 #include "Trajet.h"
@@ -25,7 +24,7 @@ using namespace std;
 //
 //------------------------------------------------------------------------
 
-class TrajetSimple : public Trajet
+class TrajetSimple : public Trajet 
 {
 //----------------------------------------------------------------- PUBLIC
 
@@ -67,7 +66,8 @@ protected:
 
 //----------------------------------------------------- Attributs protégés
 char* moyenTransport;
-
+char* villeDepart;
+char* villeArrivee;
 
 };
 

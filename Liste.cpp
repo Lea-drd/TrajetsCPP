@@ -33,6 +33,7 @@ using namespace std;
 
 
 //-------------------------------------------- Constructeurs - destructeur
+/*
 Liste::Liste ( const Liste & unListe )
 // Algorithme :
 //
@@ -41,19 +42,27 @@ Liste::Liste ( const Liste & unListe )
     cout << "Appel au constructeur de copie de <Liste>" << endl;
 #endif
 } //----- Fin de Liste (constructeur de copie)
+*/
 
-
-Liste::Liste ( )
+Liste::Liste ( Maillon * premierE, int nbE, Maillon * dernierE )
 // Algorithme :
 //
 {
 #ifdef MAP
     cout << "Appel au constructeur de <Liste>" << endl;
 #endif
+    premierElem = premierE;
+    nbElem = nbE;
+    dernierElem = dernierE;
 } //----- Fin de Liste
 
+void Liste::Ajouter(Maillon * trajet){
+    ++nbElem;
+    dernierElem->setNext(trajet);
+    trajet->setNext(nullptr);
+}
 
-virtual Liste::~Liste ( )
+Liste::~Liste ( )
 // Algorithme :
 //
 {

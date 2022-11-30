@@ -1,11 +1,12 @@
 #include <iostream>
 #include "TrajetSimple.h"
 using namespace std;
-
 #include <cstring>
+void construit();
 
 int main ()
 {
-   TrajetSimple *TS = new TrajetSimple("Lyon", "Grenoble", "Metro");
-   TS->Afficher();
+   TrajetSimple TS ("Lyon", "Grenoble", "Metro");
+   TS.Afficher();
+   return 0;
 }

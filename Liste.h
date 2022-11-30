@@ -10,6 +10,8 @@
 #if ! defined ( LISTE_H )
 #define LISTE_H
 
+#include "Maillon.h"
+
 //--------------------------------------------------- Interfaces utilisées
 
 //------------------------------------------------------------- Constantes
@@ -22,7 +24,7 @@
 //
 //------------------------------------------------------------------------
 
-class Liste : public Ancetre
+class Liste
 {
 //----------------------------------------------------------------- PUBLIC
 
@@ -39,19 +41,27 @@ public:
 
 
 //-------------------------------------------- Constructeurs - destructeur
+   /*
     Liste ( const Liste & unListe );
     // Mode d'emploi (constructeur de copie) :
     //
     // Contrat :
     //
+    */
 
-    Liste ( );
+    Liste (Maillon * premierE, int nbE, Maillon * dernierE);
     // Mode d'emploi :
     //
     // Contrat :
     //
 
-    virtual ~Liste ( );
+    virtual ~Liste ();
+    // Mode d'emploi :
+    //
+    // Contrat :
+    //
+
+    void Ajouter(Maillon * trajet);
     // Mode d'emploi :
     //
     // Contrat :
@@ -63,6 +73,9 @@ protected:
 //----------------------------------------------------- Méthodes protégées
 
 //----------------------------------------------------- Attributs protégés
+Maillon * premierElem;
+int nbElem;
+Maillon * dernierElem;
 
 };
 
