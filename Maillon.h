@@ -35,16 +35,20 @@ public:
     //
     // Contrat :
     //
-   Maillon * getNext();
-   void setNext(Maillon *);
+    Maillon * getNext();
+    Trajet * getElem();
+    void setElem(Trajet * t);
+    void setNext(Maillon *);
+    void Afficher() const;
 
 //-------------------------------------------- Constructeurs - destructeur
+ /*
     Maillon ( const Maillon & unMaillon );
     // Mode d'emploi (constructeur de copie) :
     //
     // Contrat :
     //
-
+*/
     Maillon (  Trajet * e);
     // Mode d'emploi :
     //

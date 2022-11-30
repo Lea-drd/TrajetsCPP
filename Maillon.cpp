@@ -32,8 +32,23 @@ Maillon * Maillon::getNext()
    return next;
 }
 
+void Maillon::setElem(Trajet * t){
+    elem = t;
+}
+
 void Maillon::setNext(Maillon * m){
-    next = m->getNext();
+    next = m;
+}
+
+void Maillon::Afficher() const{
+    //cout << "Adresse courante" << elem;
+    elem->Afficher();
+    //cout << endl;
+    //cout << "Adresse du suivant : " << getNext() << endl;
+}
+
+Trajet * Maillon::getElem(){
+    return elem;
 }
 //-------------------------------------------- Constructeurs - destructeur
 /*
@@ -55,6 +70,7 @@ Maillon::Maillon ( Trajet * e)
     cout << "Appel au constructeur de <Maillon>" << endl;
 #endif
    elem = e;
+   next = nullptr;
 } //----- Fin de Maillon
 
 

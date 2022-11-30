@@ -36,6 +36,8 @@ public:
     // Contrat :
     //
 
+    void Afficher() const;
+
 
 //------------------------------------------------- Surcharge d'opérateurs
 
@@ -49,7 +51,7 @@ public:
     //
     */
 
-    Liste (Maillon * premierE, int nbE, Maillon * dernierE);
+    Liste (Maillon * premierM = nullptr, int nbM = 0, Maillon * dernierM = nullptr);
     // Mode d'emploi :
     //
     // Contrat :
@@ -61,7 +63,7 @@ public:
     // Contrat :
     //
 
-    void Ajouter(Maillon * trajet);
+    void Ajouter(Trajet * trajet);
     // Mode d'emploi :
     //
     // Contrat :
@@ -73,9 +75,9 @@ protected:
 //----------------------------------------------------- Méthodes protégées
 
 //----------------------------------------------------- Attributs protégés
-Maillon * premierElem;
-int nbElem;
-Maillon * dernierElem;
+Maillon * premierMaillon;
+int nbMaillon;
+Maillon * dernierMaillon;
 
 };
 
