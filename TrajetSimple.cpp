@@ -40,7 +40,7 @@ char * TrajetSimple::GetVilleA() const{
     return villeArrivee;
 }
 
-bool TrajetSimple::GetType() {
+bool TrajetSimple::GetType() const{
     return 0;
 }
 

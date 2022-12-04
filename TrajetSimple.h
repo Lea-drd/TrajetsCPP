@@ -38,7 +38,7 @@ public:
     void Afficher() const;
     char * GetVilleD() const;
     char * GetVilleA() const;
-    bool GetType();
+    bool GetType() const;
 //------------------------------------------------- Surcharge d'opérateurs
 
 

@@ -39,8 +39,7 @@ public:
     virtual void Afficher() const = 0;
     virtual char * GetVilleD() const = 0;
     virtual char * GetVilleA() const = 0;
-    virtual bool GetType();
-
+    virtual bool GetType() const=0;
 //------------------------------------------------- Surcharge d'opérateurs
 
 
@@ -70,10 +69,8 @@ protected:
 
 //----------------------------------------------------- Attributs protégés
 
-
 };
 
 //-------------------------------- Autres définitions dépendantes de <Trajet>
 
-#endif // Trajet_H
-
+#endif // Trajet_Hf

@@ -25,6 +25,7 @@ int main ()
    Catalogue c;
 
    c.Ajouter(&TS1);
+   c.Ajouter(&TS2);
    c.Ajouter(&TC1);
 
    cout << "Affichage liste : " << endl;
@@ -34,7 +35,7 @@ int main ()
    cout << "Affichage catalogue : " << endl;
    c.Afficher();
    cout << "Résultat recherche ok : " << endl;
-   c.RechercheSimple("Lyon", "Grenoble");
+   c.RechercheSimple("Lyon", "Oloron");
    cout << "Résultat recherche ko : " << endl;
    c.RechercheSimple("Lyon", "Turin");
 

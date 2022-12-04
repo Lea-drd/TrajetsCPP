@@ -50,7 +50,7 @@ using namespace std;
         }
     }
 
-    bool TrajetCompose::GetType(){
+    bool TrajetCompose::GetType()const{
         return 1;
     }
 

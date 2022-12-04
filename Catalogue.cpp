@@ -47,8 +47,12 @@ using namespace std;
             char * va = curseur->getElem()->GetVilleA();
             if(strcmp(vd, villeA)==0 && strcmp(va, villeB)==0){
                 nbT++;
-                
-                cout << "Trajet " << nbT << " : " <<endl;
+                cout << "["<< nbT << "] ";
+                if(curseur->getElem()->GetType()==0){
+                    cout << "Trajet simple : " << endl;
+                }else{
+                    cout << "Trajet composé : " << endl;
+                }
                 curseur->getElem()->Afficher();
             }
             curseur = curseur->getNext();

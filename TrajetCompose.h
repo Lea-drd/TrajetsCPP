@@ -39,7 +39,7 @@ public:
     char * GetVilleD() const;
     char * GetVilleA() const;
     void AddStep(const TrajetSimple * ts);
-    bool GetType();
+    bool GetType() const;
 
 //------------------------------------------------- Surcharge d'opérateurs
 
