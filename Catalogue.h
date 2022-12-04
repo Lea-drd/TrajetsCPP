@@ -38,6 +38,7 @@ public:
 
     void Ajouter(Trajet * trajet);
     void Afficher();
+    void RechercheSimple(const char * villeA, const char * villeB);
 
 //------------------------------------------------- Surcharge d'opérateurs
 

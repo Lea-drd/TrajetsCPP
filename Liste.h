@@ -38,6 +38,8 @@ public:
 
     void Afficher() const;
     void AddToQueue(Trajet * trajet);
+    Maillon * getPremier();
+    Maillon * getDernier();
 
 
 //------------------------------------------------- Surcharge d'opérateurs

@@ -36,7 +36,8 @@ public:
     // Contrat :
     //
     void Afficher() const;
-
+    char * GetVilleD() const;
+    char * GetVilleA() const;
 //------------------------------------------------- Surcharge d'opérateurs
 
 

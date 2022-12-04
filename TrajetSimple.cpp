@@ -32,6 +32,14 @@ void TrajetSimple::Afficher() const
     cout << "De " << villeDepart << " à " << villeArrivee << " en " << moyenTransport << "\r\n"; 
 }
 
+char * TrajetSimple::GetVilleD() const{
+    return villeDepart;
+}
+
+char * TrajetSimple::GetVilleA() const{
+    return villeArrivee;
+}
+
 //------------------------------------------------- Surcharge d'opérateurs
 
 

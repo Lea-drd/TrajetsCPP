@@ -14,6 +14,8 @@
 using namespace std;
 #include <iostream>
 
+#include <string.h>
+
 //------------------------------------------------------ Include personnel
 #include "Catalogue.h"
 
@@ -35,6 +37,26 @@ using namespace std;
     void Catalogue::Afficher(){
         trajets->Afficher();
     }
+
+    void Catalogue::RechercheSimple(const char * villeA, const char * villeB){
+        Maillon * curseur = trajets->getPremier();
+        int nbT = 0;
+
+        while(curseur != nullptr){
+            char * vd = curseur->getElem()->GetVilleD();
+            char * va = curseur->getElem()->GetVilleA();
+            if(strcmp(vd, villeA)==0 && strcmp(va, villeB)==0){
+                nbT++;
+                cout << "Trajet " << nbT << " : " <<endl;
+                curseur->getElem()->Afficher();
+            }
+            curseur = curseur->getNext();
+        }
+        if(nbT==0){
+            cout << "Pas de trajet trouvé. " << endl;
+        }
+    }
+
 //------------------------------------------------- Surcharge d'opérateurs
 
 

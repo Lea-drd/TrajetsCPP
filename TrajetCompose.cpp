@@ -33,6 +33,15 @@ using namespace std;
         trajets->Afficher();
     }
 
+    char * TrajetCompose::GetVilleD() const{
+    return trajets->getPremier()->getElem()->GetVilleD();
+}
+
+    char * TrajetCompose::GetVilleA() const{
+        return trajets->getDernier()->getElem()->GetVilleA();
+    }
+
+
 //------------------------------------------------- Surcharge d'opérateurs
 
 

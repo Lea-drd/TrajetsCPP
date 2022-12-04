@@ -29,6 +29,10 @@ int main ()
    TC1.Afficher();
    cout << "Affichage catalogue : " << endl;
    c.Afficher();
+   cout << "Résultat recherche ok : " << endl;
+   c.RechercheSimple("Lyon", "Grenoble");
+   cout << "Résultat recherche ko : " << endl;
+   c.RechercheSimple("Lyon", "Turin");
 
    return 0;
 }

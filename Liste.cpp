@@ -53,6 +53,14 @@ void Liste::AddToQueue(Trajet * trajet){
     dernierMaillon = leMaillon;
 }
 
+Maillon * Liste::getPremier(){
+    return premierMaillon;
+}
+
+Maillon * Liste::getDernier(){
+    return dernierMaillon;
+}
+
 //------------------------------------------------- Surcharge d'opérateurs
 
 
