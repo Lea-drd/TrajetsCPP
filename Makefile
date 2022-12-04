@@ -1,5 +1,5 @@
 EXE = exe
-OBJETS = Try.o Trajet.o TrajetSimple.o TrajetCompose.o Maillon.o Liste.o #Catalogue.o 
+OBJETS = Try.o Trajet.o TrajetSimple.o TrajetCompose.o Maillon.o Liste.o Catalogue.o 
 FLAGS = -c -g # pour débug -c -g
 
 $(EXE): $(OBJETS)

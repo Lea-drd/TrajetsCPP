@@ -3,6 +3,7 @@
 #include "TrajetCompose.h"
 #include "Liste.h"
 #include "Maillon.h"
+#include "Catalogue.h"
 using namespace std;
 #include <cstring>
 void construit();
@@ -16,10 +17,18 @@ int main ()
    l.AddToQueue(&TS1);
    l.AddToQueue(&TS2);
    TrajetCompose TC1(&l, 2);
-/* TS1.Afficher();
-   TS2.Afficher();
-*/
+
+   Catalogue c;
+
+   c.Ajouter(&TS1);
+   c.Ajouter(&TC1);
+
+   cout << "Affichage liste : " << endl;
    l.Afficher();
+   cout << "Affichage trajet composé : " << endl;
    TC1.Afficher();
+   cout << "Affichage catalogue : " << endl;
+   c.Afficher();
+
    return 0;
 }

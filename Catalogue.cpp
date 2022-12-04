@@ -28,12 +28,12 @@ using namespace std;
 //{
 //} //----- Fin de Méthode
 
-    void Ajouter(Trajet * trajet){
-        trajets->Ajouter(trajet);
+    void Catalogue::Ajouter(Trajet * trajet){
+        trajets->AddToQueue(trajet);
     }
 
-    void Afficher(Trajet * trajet){
-        trajets->Afficher(trajet);
+    void Catalogue::Afficher(){
+        trajets->Afficher();
     }
 //------------------------------------------------- Surcharge d'opérateurs
 
@@ -62,13 +62,17 @@ trajets = new Liste();
 } //----- Fin de Catalogue
 
 
-virtual Catalogue::~Catalogue ( )
+Catalogue::~Catalogue ( )
 // Algorithme :
 //
 {
 #ifdef MAP
     cout << "Appel au destructeur de <Catalogue>" << endl;
 #endif
+
+    delete(trajets);
+
+
 } //----- Fin de ~Catalogue
 
 

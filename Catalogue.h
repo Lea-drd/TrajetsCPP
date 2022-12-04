@@ -36,7 +36,8 @@ public:
     // Contrat :
     //
 
-    void Catalogue::Ajouter(Trajet * trajet);
+    void Ajouter(Trajet * trajet);
+    void Afficher();
 
 //------------------------------------------------- Surcharge d'opérateurs
 
