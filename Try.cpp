@@ -11,12 +11,16 @@ void construit();
 int main ()
 {
 
-   Liste l (nullptr, 0, nullptr);
+   Liste l;
    TrajetSimple TS1 ("Lyon", "Grenoble", "Metro");
-   TrajetSimple TS2 ("Paris", "Oloron", "Train");
+   TrajetSimple TS2 ("Lyon", "Oloron", "Train");
+   TrajetSimple TS3 ("Grenoble", "Oloron", "Train");
    l.AddToQueue(&TS1);
    l.AddToQueue(&TS2);
-   TrajetCompose TC1(&l, 2);
+   TrajetCompose TC1(&TS1);
+   TC1.AddStep(&TS2);
+   TC1.AddStep(&TS3);
+   
 
    Catalogue c;
 

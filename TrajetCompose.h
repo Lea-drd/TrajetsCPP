@@ -13,6 +13,7 @@
 //--------------------------------------------------- Interfaces utilisées
 #include "Trajet.h"
 #include "Liste.h"
+#include "TrajetSimple.h"
 //------------------------------------------------------------- Constantes
 
 //------------------------------------------------------------------ Types
@@ -37,7 +38,8 @@ public:
     void Afficher() const;
     char * GetVilleD() const;
     char * GetVilleA() const;
-
+    void AddStep(const TrajetSimple * ts);
+    bool GetType();
 
 //------------------------------------------------- Surcharge d'opérateurs
 
@@ -51,7 +53,7 @@ public:
     //
     */
 
-    TrajetCompose ( Liste * trs, int nbT = 0 );
+    TrajetCompose ( const Trajet * tj );
     // Mode d'emploi :
     //
     // Contrat :
@@ -70,8 +72,8 @@ protected:
 
 //----------------------------------------------------- Attributs protégés
 Liste * trajets;
+char * derniereVilleTrajet;
 int nbTrajets;
-
 };
 
 //-------------------------------- Autres définitions dépendantes de <TrajetCompose>

@@ -37,7 +37,7 @@ public:
     //
 
     void Afficher() const;
-    void AddToQueue(Trajet * trajet);
+    void AddToQueue(const Trajet * trajet);
     Maillon * getPremier();
     Maillon * getDernier();
 
@@ -54,7 +54,7 @@ public:
     //
     */
 
-    Liste (Maillon * premierM = nullptr, int nbM = 0, Maillon * dernierM = nullptr);
+    Liste ();
     // Mode d'emploi :
     //
     // Contrat :

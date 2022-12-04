@@ -36,7 +36,7 @@ public:
     // Contrat :
     //
     Maillon * getNext();
-    Trajet * getElem();
+    const Trajet * getElem();
     void setElem(Trajet * t);
     void setNext(Maillon *);
     void Afficher() const;
@@ -49,7 +49,7 @@ public:
     // Contrat :
     //
 */
-    Maillon (  Trajet * e);
+    Maillon ( const Trajet * e);
     // Mode d'emploi :
     //
     // Contrat :
@@ -67,7 +67,7 @@ protected:
 //----------------------------------------------------- Méthodes protégées
 
 //----------------------------------------------------- Attributs protégés
-   Trajet * elem;
+   const Trajet * elem;
    Maillon * next;
 
 };

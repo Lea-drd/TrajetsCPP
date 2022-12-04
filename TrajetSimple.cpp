@@ -40,6 +40,11 @@ char * TrajetSimple::GetVilleA() const{
     return villeArrivee;
 }
 
+bool TrajetSimple::GetType() {
+    return 0;
+}
+
+
 //------------------------------------------------- Surcharge d'opérateurs
 
 

@@ -39,6 +39,7 @@ public:
     virtual void Afficher() const = 0;
     virtual char * GetVilleD() const = 0;
     virtual char * GetVilleA() const = 0;
+    virtual bool GetType();
 
 //------------------------------------------------- Surcharge d'opérateurs
 
@@ -68,6 +69,7 @@ protected:
 //----------------------------------------------------- Méthodes protégées
 
 //----------------------------------------------------- Attributs protégés
+
 
 };
 

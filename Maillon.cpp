@@ -47,7 +47,7 @@ void Maillon::Afficher() const{
     //cout << "Adresse du suivant : " << getNext() << endl;
 }
 
-Trajet * Maillon::getElem(){
+const Trajet * Maillon::getElem(){
     return elem;
 }
 //-------------------------------------------- Constructeurs - destructeur
@@ -62,7 +62,7 @@ Maillon::Maillon ( const Maillon & unMaillon )
 } //----- Fin de Maillon (constructeur de copie)
 */
 
-Maillon::Maillon ( Trajet * e)
+Maillon::Maillon ( const Trajet * e)
 // Algorithme :
 //
 {

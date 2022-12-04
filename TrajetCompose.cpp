@@ -41,6 +41,19 @@ using namespace std;
         return trajets->getDernier()->getElem()->GetVilleA();
     }
 
+    void TrajetCompose::AddStep(const TrajetSimple * ts){
+        if(strcmp(trajets->getDernier()->getElem()->GetVilleA(), ts->GetVilleD())==0){
+            trajets->AddToQueue(ts);
+        }
+        else{
+            cout << "[ERROR] La nouvelle étape débute à " << ts->GetVilleD() << " alors que la dernière étape termine à " << trajets->getDernier()->getElem()->GetVilleA() << endl;
+        }
+    }
+
+    bool TrajetCompose::GetType(){
+        return 1;
+    }
+
 
 //------------------------------------------------- Surcharge d'opérateurs
 
@@ -57,15 +70,17 @@ TrajetCompose::TrajetCompose ( const TrajetCompose & unTrajetCompose )
 } //----- Fin de TrajetCompose (constructeur de copie)
 */
 
-TrajetCompose::TrajetCompose (Liste * trs, int nbT)
+TrajetCompose::TrajetCompose (const Trajet * tj)
 // Algorithme :
 //
 {
 #ifdef MAP
     cout << "Appel au constructeur de <TrajetCompose>" << endl;
 #endif
-    nbTrajets = nbT;
-    trajets = trs;
+    trajets = new Liste();
+    trajets->AddToQueue(tj);
+    nbTrajets = 1;
+    derniereVilleTrajet = trajets->getDernier()->getElem()->GetVilleA();
 } //----- Fin de TrajetCompose
 
 
@@ -76,6 +91,7 @@ TrajetCompose::~TrajetCompose ( )
 #ifdef MAP
     cout << "Appel au destructeur de <TrajetCompose>" << endl;
 #endif
+    delete(trajets);
 } //----- Fin de ~TrajetCompose
 
 
