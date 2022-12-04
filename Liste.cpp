@@ -39,7 +39,7 @@ void Liste::Afficher() const{
     } 
 }
 
-void Liste::AddToQueue(Trajet * trajet){
+void Liste::AddToQueue(const Trajet * trajet){
     Maillon * leMaillon = new Maillon(trajet);
     ++nbMaillon;
     if(premierMaillon == nullptr)
@@ -76,16 +76,16 @@ Liste::Liste ( const Liste & unListe )
 } //----- Fin de Liste (constructeur de copie)
 */
 
-Liste::Liste ( Maillon * premierM, int nbM, Maillon * dernierM )
+Liste::Liste ()
 // Algorithme :
 //
 {
 #ifdef MAP
     cout << "Appel au constructeur de <Liste>" << endl;
 #endif
-    premierMaillon = premierM;
-    nbMaillon = nbM;
-    dernierMaillon = dernierM;
+    premierMaillon = nullptr;
+    nbMaillon = 0;
+    dernierMaillon = nullptr;
 } //----- Fin de Liste
 
 Liste::~Liste ( )

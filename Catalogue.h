@@ -13,6 +13,7 @@
 //--------------------------------------------------- Interfaces utilisées
 #include "Trajet.h"
 #include "Liste.h"
+#include "TrajetSimple.h"
 
 //------------------------------------------------------------- Constantes
 
