@@ -1,0 +1,71 @@
+2
+1
+A
+B
+T1
+2
+1
+B
+C
+T2
+2
+1
+A
+V
+T1
+2
+1
+A
+C
+T1
+2
+2
+V
+Z
+T3
+1
+Z
+B
+T2
+1
+B
+C
+T4
+0
+2
+1
+A
+D
+T5
+2
+2
+A
+C
+T3
+1
+C
+B
+T4
+0
+2
+1
+C
+B
+T2
+3
+A
+C
+1
+0
+
+
+A B T1
+B C T2
+A V T1
+A C T1
+V C     V Z T3 - Z B T2 - B C T4
+A D T5
+A B     A C T3 - C B T4
+C B T2
+RECHERCHE A B
+AFFICHE

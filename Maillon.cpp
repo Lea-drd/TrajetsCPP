@@ -18,49 +18,28 @@ using namespace std;
 #include "Maillon.h"
 
 //------------------------------------------------------------- Constantes
-
+#define nullptr NULL
 //----------------------------------------------------------------- PUBLIC
 
 //----------------------------------------------------- Méthodes publiques
-// type Maillon::Méthode ( liste des paramètres )
-// Algorithme :
-//
-//{
-//} //----- Fin de Méthode
-Maillon * Maillon::getNext()
+
+Maillon * Maillon::GetNext()
 {
-   return next;
+    return next;
 }
 
-void Maillon::setElem(Trajet * t){
+void Maillon::SetElem(Trajet * t){
     elem = t;
 }
 
-void Maillon::setNext(Maillon * m){
+void Maillon::SetNext(Maillon * m){
     next = m;
 }
 
-void Maillon::Afficher() const{
-    //cout << "Adresse courante" << elem;
-    elem->Afficher();
-    //cout << endl;
-    //cout << "Adresse du suivant : " << getNext() << endl;
-}
-
-const Trajet * Maillon::getElem(){
+const Trajet * Maillon::GetElem(){
     return elem;
 }
 //-------------------------------------------- Constructeurs - destructeur
-/*
-Maillon::Maillon ( const Maillon & unMaillon )
-// Algorithme :
-//
-{
-#ifdef MAP
-    cout << "Appel au constructeur de copie de <Maillon>" << endl;
-#endif
-} //----- Fin de Maillon (constructeur de copie)
-*/
 
 Maillon::Maillon ( const Trajet * e)
 // Algorithme :
@@ -76,15 +55,18 @@ Maillon::Maillon ( const Trajet * e)
 
 Maillon::~Maillon ( )
 // Algorithme :
-//
+//  On détruit le Trajet lié et par recursivité les maillons vont se détruire jusqu'au dernier qui est null
 {
 #ifdef MAP
     cout << "Appel au destructeur de <Maillon>" << endl;
 #endif
+    if(next != nullptr){
+        delete next;
+    }
+    delete elem;
 } //----- Fin de ~Maillon
 
 
 //------------------------------------------------------------------ PRIVE
 
 //----------------------------------------------------- Méthodes protégées
-

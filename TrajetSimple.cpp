@@ -13,6 +13,7 @@
 //-------------------------------------------------------- Include système
 using namespace std;
 #include <iostream>
+#include <cstring>
 
 //------------------------------------------------------ Include personnel
 #include "TrajetSimple.h"
@@ -22,14 +23,14 @@ using namespace std;
 //----------------------------------------------------------------- PUBLIC
 
 //----------------------------------------------------- Méthodes publiques
-// type TrajetSimple::Méthode ( liste des paramètres )
+
+// void TrajetSimple::Afficher ( )
 // Algorithme :
-//
 //{
-//} //----- Fin de Méthode
+//} //----- Fin de Afficher
 void TrajetSimple::Afficher() const
 {
-    cout << "De " << villeDepart << " à " << villeArrivee << " en " << moyenTransport << "\r\n"; 
+    cout << " - De " << villeDepart << " à " << villeArrivee << " en " << moyenTransport; 
 }
 
 char * TrajetSimple::GetVilleD() const{
@@ -38,6 +39,10 @@ char * TrajetSimple::GetVilleD() const{
 
 char * TrajetSimple::GetVilleA() const{
     return villeArrivee;
+}
+
+char * TrajetSimple::GetTransport() const{
+    return moyenTransport;
 }
 
 bool TrajetSimple::GetType() const{
@@ -49,19 +54,10 @@ bool TrajetSimple::GetType() const{
 
 
 //-------------------------------------------- Constructeurs - destructeur
-/*TrajetSimple::TrajetSimple ( const TrajetSimple & unTrajetSimple )
-// Algorithme :
-//
-{
-#ifdef MAP
-    cout << "Appel au constructeur de copie de <TrajetSimple>" << endl;
-#endif
-} //----- Fin de TrajetSimple (constructeur de copie)*/
-
 
 TrajetSimple::TrajetSimple (const char* vd, const char* va, const char* mt)
 // Algorithme :
-//Construit un trajet tout seul
+//
 {
 #ifdef MAP
     cout << "Appel au constructeur de <TrajetSimple>" << endl;

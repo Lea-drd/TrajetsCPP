@@ -6,6 +6,7 @@
     e-mail               : $EMAIL$
 *************************************************************************/
 
+
 //---------- Interface de la classe <Maillon> (fichier Maillon.h) ----------------
 #if ! defined ( MAILLON_H )
 #define MAILLON_H
@@ -20,8 +21,8 @@
 
 //------------------------------------------------------------------------
 // Rôle de la classe <Maillon>
-//
-//
+//  Définie comment sont liés les trajets entre eux.
+//  Chaque trajet est relié à un autre par un pointeur de façon ordonnée
 //------------------------------------------------------------------------
 
 class Maillon
@@ -35,30 +36,24 @@ public:
     //
     // Contrat :
     //
-    Maillon * getNext();
-    const Trajet * getElem();
-    void setElem(Trajet * t);
-    void setNext(Maillon *);
-    void Afficher() const;
+    Maillon * GetNext();
+    const Trajet * GetElem();
+    void SetElem(Trajet * t);
+    void SetNext(Maillon *);
+    //void Afficher() const;
 
 //-------------------------------------------- Constructeurs - destructeur
- /*
-    Maillon ( const Maillon & unMaillon );
-    // Mode d'emploi (constructeur de copie) :
-    //
-    // Contrat :
-    //
-*/
+
     Maillon ( const Trajet * e);
     // Mode d'emploi :
     //
-    // Contrat :
+    // Contrat : aucun
     //
 
     virtual ~Maillon ( );
     // Mode d'emploi :
     //
-    // Contrat :
+    // Contrat : aucun
     //
 
 //------------------------------------------------------------------ PRIVE

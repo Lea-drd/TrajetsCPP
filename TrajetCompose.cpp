@@ -13,40 +13,54 @@
 //-------------------------------------------------------- Include système
 using namespace std;
 #include <iostream>
+#include <cstring>
 
 //------------------------------------------------------ Include personnel
 #include "TrajetCompose.h"
 
 //------------------------------------------------------------- Constantes
-
+#define nullptr NULL
 //----------------------------------------------------------------- PUBLIC
 
 //----------------------------------------------------- Méthodes publiques
-// type TrajetCompose::Méthode ( liste des paramètres )
-// Algorithme :
-//
-//{
-//} //----- Fin de Méthode
 
+// void TrajetCompose::Afficher ( )
+// Algorithme :
+//  Appel l'affichage de la liste contenant des trajets simples
+//{
+//} //----- Fin de Afficher
     void TrajetCompose::Afficher() const
-    {
+    {    
         trajets->Afficher();
     }
 
     char * TrajetCompose::GetVilleD() const{
-    return trajets->getPremier()->getElem()->GetVilleD();
-}
-
-    char * TrajetCompose::GetVilleA() const{
-        return trajets->getDernier()->getElem()->GetVilleA();
+    return trajets->GetPremier()->GetElem()->GetVilleD();
     }
 
+    char * TrajetCompose::GetVilleA() const{
+        return trajets->GetDernier()->GetElem()->GetVilleA();
+    }
+
+// void AddStep::Afficher ( const TrajetSimple * ts )
+// Algorithme :
+//  Ajoute l'étape si la ville de départ correspond à la ville d'arrivée précédente
+//  Sinon renvoie un message d'erreur
+//{
+//} //----- Fin de AddStep
     void TrajetCompose::AddStep(const TrajetSimple * ts){
-        if(strcmp(trajets->getDernier()->getElem()->GetVilleA(), ts->GetVilleD())==0){
+        if (trajets->GetPremier() == nullptr)
+        {
+            trajets->AddToQueue(ts);
+            derniereVilleTrajet = trajets->GetDernier()->GetElem()->GetVilleA();
+        }
+        else if (!strcmp(trajets->GetDernier()->GetElem()->GetVilleA(), ts->GetVilleD()))
+        { // La ville de départ et la précédente ville d'arrivée sont les mêmes
             trajets->AddToQueue(ts);
         }
-        else{
-            cout << "[ERROR] La nouvelle étape débute à " << ts->GetVilleD() << " alors que la dernière étape termine à " << trajets->getDernier()->getElem()->GetVilleA() << endl;
+        else
+        {
+            cout << "[ERROR] La nouvelle étape débute à " << ts->GetVilleD() << " alors que la dernière étape termine à " << trajets->GetDernier()->GetElem()->GetVilleA() << endl;
         }
     }
 
@@ -59,18 +73,8 @@ using namespace std;
 
 
 //-------------------------------------------- Constructeurs - destructeur
-/*
-TrajetCompose::TrajetCompose ( const TrajetCompose & unTrajetCompose )
-// Algorithme :
-//
-{
-#ifdef MAP
-    cout << "Appel au constructeur de copie de <TrajetCompose>" << endl;
-#endif
-} //----- Fin de TrajetCompose (constructeur de copie)
-*/
 
-TrajetCompose::TrajetCompose (const Trajet * tj)
+TrajetCompose::TrajetCompose ()
 // Algorithme :
 //
 {
@@ -78,9 +82,6 @@ TrajetCompose::TrajetCompose (const Trajet * tj)
     cout << "Appel au constructeur de <TrajetCompose>" << endl;
 #endif
     trajets = new Liste();
-    trajets->AddToQueue(tj);
-    nbTrajets = 1;
-    derniereVilleTrajet = trajets->getDernier()->getElem()->GetVilleA();
 } //----- Fin de TrajetCompose
 
 
@@ -91,7 +92,7 @@ TrajetCompose::~TrajetCompose ( )
 #ifdef MAP
     cout << "Appel au destructeur de <TrajetCompose>" << endl;
 #endif
-    delete(trajets);
+    delete trajets;
 } //----- Fin de ~TrajetCompose
 
 

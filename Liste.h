@@ -10,18 +10,16 @@
 #if ! defined ( LISTE_H )
 #define LISTE_H
 
-#include "Maillon.h"
-
 //--------------------------------------------------- Interfaces utilisées
-
+#include "Maillon.h"
 //------------------------------------------------------------- Constantes
 
 //------------------------------------------------------------------ Types
 
 //------------------------------------------------------------------------
 // Rôle de la classe <Liste>
-//
-//
+//  Elle permet de gerer une collection de Trajets simples et complexes. 
+//  La Liste permet l'ajout, le tri et l'affichage
 //------------------------------------------------------------------------
 
 class Liste
@@ -30,29 +28,36 @@ class Liste
 
 public:
 //----------------------------------------------------- Méthodes publiques
-    // type Méthode ( liste des paramètres );
-    // Mode d'emploi :
-    //
-    // Contrat :
-    //
 
+// void Afficher ( );
+// Mode d'emploi :
+//  Permet l'affichage de chaque élément la constituant
+// Contrat :
+//
     void Afficher() const;
-    void AddToQueue(const Trajet * trajet);
-    Maillon * getPremier();
-    Maillon * getDernier();
 
+// void AddToQueue ( const Trajet * trajet );
+// Mode d'emploi :
+//  trajet est le trajet à ajouter
+//  Permet d'ajouter à la fin de la liste
+// Contrat :
+//
+    void AddToQueue(const Trajet * trajet);
+
+// void AddSorted ( const Trajet * trajet );
+// Mode d'emploi :
+//  trajet est le trajet à ajouter
+//  Permet d'ajouter de façon triée dans la liste
+// Contrat :
+//
+    void AddSorted(const Trajet * trajet);
+    Maillon * GetPremier();
+    Maillon * GetDernier();
 
 //------------------------------------------------- Surcharge d'opérateurs
 
 
 //-------------------------------------------- Constructeurs - destructeur
-   /*
-    Liste ( const Liste & unListe );
-    // Mode d'emploi (constructeur de copie) :
-    //
-    // Contrat :
-    //
-    */
 
     Liste ();
     // Mode d'emploi :
@@ -72,11 +77,10 @@ public:
 protected:
 //----------------------------------------------------- Méthodes protégées
 
-//----------------------------------------------------- Attributs protégés
+//----------------------------------------------------- Att&ributs protégés
 Maillon * premierMaillon;
-int nbMaillon;
 Maillon * dernierMaillon;
-
+int nbMaillon;
 };
 
 //-------------------------------- Autres définitions dépendantes de <Liste>

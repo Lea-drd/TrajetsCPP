@@ -9,9 +9,6 @@
 //---------- Interface de la classe <Trajet> (fichier Trajet.h) ----------------
 #if ! defined ( TRAJET_H )
 #define TRAJET_H
-using namespace std;
-#include <cstring>
-
 
 //--------------------------------------------------- Interfaces utilisées
 
@@ -21,7 +18,7 @@ using namespace std;
 
 //------------------------------------------------------------------------
 // Rôle de la classe <Trajet>
-//
+//  Classe virtuelle pure
 //
 //------------------------------------------------------------------------
 
@@ -31,11 +28,6 @@ class Trajet
 
 public:
 //----------------------------------------------------- Méthodes publiques
-    // type Méthode ( liste des paramètres );
-    // Mode d'emploi :
-    //
-    // Contrat :
-    //
     virtual void Afficher() const = 0;
     virtual char * GetVilleD() const = 0;
     virtual char * GetVilleA() const = 0;
@@ -44,11 +36,6 @@ public:
 
 
 //-------------------------------------------- Constructeurs - destructeur
-  /*  Trajet ( const Trajet & unTrajet );
-    // Mode d'emploi (constructeur de copie) :
-    //
-    // Contrat :
-    //*/
 
     Trajet ();
     // Mode d'emploi :
@@ -73,4 +60,4 @@ protected:
 
 //-------------------------------- Autres définitions dépendantes de <Trajet>
 
-#endif // Trajet_Hf
+#endif // Trajet
