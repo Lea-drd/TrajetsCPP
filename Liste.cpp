@@ -14,6 +14,7 @@
 using namespace std;
 #include <iostream>
 #include <cstring>
+#include <fstream>
 #define nullptr NULL
 
 //------------------------------------------------------ Include personnel
@@ -34,11 +35,26 @@ void Liste::Afficher() const{
     Maillon * cursMaillon = premierMaillon;
     if(cursMaillon!=nullptr){
         cursMaillon->GetElem()->Afficher();
-        
     }
     while(cursMaillon->GetNext()!=nullptr){
         cursMaillon=cursMaillon->GetNext();
         cursMaillon->GetElem()->Afficher();
+    } 
+}
+
+void Liste::SauvegarderEtape(const char * ficN) const
+{
+    ofstream fic;
+    fic.open(ficN, std::ios_base::app);
+
+    Maillon * cursMaillon = premierMaillon;
+    if(cursMaillon!=nullptr){
+        fic << cursMaillon->GetElem()->GetVilleD() << "//" << cursMaillon->GetElem()->GetVilleA() << "//" << cursMaillon->GetElem()->GetTransport() << endl;
+        
+    }
+    while(cursMaillon->GetNext()!=nullptr){
+        cursMaillon=cursMaillon->GetNext();
+        fic << cursMaillon->GetElem()->GetVilleD() << "//" << cursMaillon->GetElem()->GetVilleA() << "//" << cursMaillon->GetElem()->GetTransport() << endl;
     } 
 }
 

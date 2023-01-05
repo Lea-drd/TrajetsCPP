@@ -36,6 +36,7 @@ public:
     // Contrat :
     //
     void Afficher() const;
+    void SauvegarderTrajet(const char * ficN) const;
     char * GetVilleD() const;
     char * GetVilleA() const;
     char * GetTransport() const;

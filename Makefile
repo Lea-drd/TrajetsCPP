@@ -20,3 +20,5 @@ Menu.o: Menu.cpp
 	g++ $(FLAGS) Menu.cpp
 Maillon.o: Maillon.cpp
 	g++ $(FLAGS) Maillon.cpp
+clean:
+	rm $(OBJETS) $(EXE)

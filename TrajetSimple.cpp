@@ -14,6 +14,7 @@
 using namespace std;
 #include <iostream>
 #include <cstring>
+#include <fstream>
 
 //------------------------------------------------------ Include personnel
 #include "TrajetSimple.h"
@@ -32,6 +33,14 @@ void TrajetSimple::Afficher() const
 {
     cout << " - De " << villeDepart << " à " << villeArrivee << " en " << moyenTransport; 
 }
+
+void TrajetSimple::SauvegarderTrajet(const char * ficN) const
+    {
+        ofstream fic;
+        fic.open(ficN, std::ios_base::app);
+        fic << GetVilleD() << "//" << GetVilleA() << "//" << GetTransport() << endl;
+        fic.close();
+    }
 
 char * TrajetSimple::GetVilleD() const{
     return villeDepart;

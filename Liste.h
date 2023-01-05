@@ -36,6 +36,8 @@ public:
 //
     void Afficher() const;
 
+    void SauvegarderEtape(const char * ficN) const;
+
 // void AddToQueue ( const Trajet * trajet );
 // Mode d'emploi :
 //  trajet est le trajet à ajouter

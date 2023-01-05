@@ -14,6 +14,7 @@
 using namespace std;
 #include <iostream>
 #include <cstring>
+#include <fstream>
 
 //------------------------------------------------------ Include personnel
 #include "TrajetCompose.h"
@@ -34,12 +35,22 @@ using namespace std;
         trajets->Afficher();
     }
 
+    void TrajetCompose::SauvegarderTrajet(const char * ficN) const
+    {
+        trajets->SauvegarderEtape(ficN);
+    }
+
     char * TrajetCompose::GetVilleD() const{
     return trajets->GetPremier()->GetElem()->GetVilleD();
     }
 
     char * TrajetCompose::GetVilleA() const{
         return trajets->GetDernier()->GetElem()->GetVilleA();
+    }
+
+    char * TrajetCompose::GetTransport() const
+    {
+        return '\0';
     }
 
 // void AddStep::Afficher ( const TrajetSimple * ts )

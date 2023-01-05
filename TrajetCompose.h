@@ -14,6 +14,7 @@
 #include "Trajet.h"
 #include "Liste.h"
 #include "TrajetSimple.h"
+
 //------------------------------------------------------------- Constantes
 
 //------------------------------------------------------------------ Types
@@ -39,6 +40,8 @@ public:
 //
     void Afficher() const;
 
+    void SauvegarderTrajet(const char * ficN) const;
+
 // void AddStep ( const TrajetSimple * ts );
 // Mode d'emploi :
 //  ts est le Trajet simple que l'on veut ajouter
@@ -48,6 +51,7 @@ public:
     void AddStep(const TrajetSimple * ts);
     char * GetVilleD() const;
     char * GetVilleA() const;
+    char * GetTransport() const;
     bool GetType() const;
 
 //------------------------------------------------- Surcharge d'opérateurs

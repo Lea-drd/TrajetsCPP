@@ -29,8 +29,10 @@ class Trajet
 public:
 //----------------------------------------------------- Méthodes publiques
     virtual void Afficher() const = 0;
+    virtual void SauvegarderTrajet(const char * ficN) const = 0;
     virtual char * GetVilleD() const = 0;
     virtual char * GetVilleA() const = 0;
+    virtual char * GetTransport() const = 0;
     virtual bool GetType() const=0;
 //------------------------------------------------- Surcharge d'opérateurs
 

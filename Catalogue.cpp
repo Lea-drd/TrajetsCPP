@@ -64,29 +64,26 @@ using namespace std;
     void Catalogue::Sauvegarde() const{
         //penser à demander le nom du fichier après !!!!
         ofstream fic;
-        fic.open ("sauvegarde.txt");
         int n=1;
         //cout << "Affichage de Catalogue" << endl;
         Maillon * cursMaillon = trajets->GetPremier();
         if(cursMaillon!=nullptr){
+            const char * ficN = "sauvegarde.txt";
+            fic.open (ficN);
             fic << cursMaillon->GetElem()->GetType() << endl;
-            fic << cursMaillon->GetElem()->GetVilleD() << "//" << cursMaillon->GetElem()->GetVilleA() << endl;
-            // Si c'est composé alors
-            if(cursMaillon->GetElem()->GetType() == 1){
-                //fic << cursMaillon->GetElem()->SauvegarderTrajet() << endl;
-            }
+            fic << cursMaillon->GetElem()->GetVilleD() << "//" << cursMaillon->GetElem()->GetVilleA();
+            fic.close();
+            cursMaillon->GetElem()->SauvegarderTrajet(ficN);
             while(cursMaillon->GetNext()!=nullptr){
                 ++n;
                 cursMaillon=cursMaillon->GetNext();
+                fic.open (ficN, std::ios_base::app);
                 fic << cursMaillon->GetElem()->GetType() << endl;
                 fic << cursMaillon->GetElem()->GetVilleD() << "//" << cursMaillon->GetElem()->GetVilleA() << endl;
-                // Si c'est composé alors
-                if(cursMaillon->GetElem()->GetType() == 1){
-                    //fic << cursMaillon->GetElem()->SauvegarderTrajet() << endl;
-                }
+                fic.close();
+                cursMaillon->GetElem()->SauvegarderTrajet(ficN);
             } 
         }
-        fic.close();
     }
 
 // void Catalogue::RechercheSimple ( const char * villeD, const char * villeA )
