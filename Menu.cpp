@@ -4,7 +4,6 @@
 #include "Liste.h"
 #include "Maillon.h"
 #include "Catalogue.h"
-#include <istream>
 using namespace std;
 #include <cstring>
 
@@ -13,111 +12,65 @@ void menu ();
 TrajetSimple * creationTS()
 {
    char vd [30], va [30], transport [30];
-   cout << "Merci de remplacer les \" \" par des \"_\"" << endl;
-   cout << "Ville de départ ?" << endl << "--> ";
-   cin >> vd;
-   cout << "Ville d'arrivée ?" << endl << "--> ";
-   cin >> va;
-   cout << "Moyen de transport ?" << endl << "--> ";
-   cin >> transport;  
+   cin.ignore();
+   cout << "Ville de départ ?\n--> ";
+   cin.getline(vd, 30);
+   cout << "Ville d'arrivée ?\n--> ";
+   cin.getline(va, 30);
+   cout << "Moyen de transport ?\n--> ";
+   cin.getline(transport, 30);
    cout << endl;  
    TrajetSimple * TS = new TrajetSimple(vd, va, transport);
-   
    return TS;
 }
 
 void creationTC(Catalogue &c)
 {
-   bool entreeTrajet = 1;
-   int reponse;
    TrajetCompose * TC = new TrajetCompose();
-   while (entreeTrajet)
+   char lecture [] = {'1'};
+
+   while (strcmp(lecture,"0")!=0)
    {
-      TrajetSimple * TS = creationTS();
-      TC->AddStep(TS);
+      if (strcmp(lecture,"1")==0) {
+         TrajetSimple * TS = creationTS();
+         TC->AddStep(TS);
+      }
       cout << "--------------------------------" << endl;
       cout << "Entrer une nouvelle étape - taper 1." << endl;
-      cout << "Valider          - taper 0." << endl;
+      cout << "Valider                   - taper 0." << endl;
       cout << "--> "; 
-      cin >> reponse;
-      cout << endl;
-
-      switch (reponse)
-      {
-      case 1:
-      {
-         break;
-      }
-
-      case 0:
-      {
-         c.Ajouter(TC);
-         entreeTrajet = 0;
-         break;
-      }
-      
-      default:
-      {
-         cout << "Réponse non reconnue." << endl;
-         break;
-      }
-
-      }
+      cin >> lecture;
    }
+   c.Ajouter(TC);
 }
 
 
 void AjoutCatalogue(Catalogue &c)
 {
-   int reponse;
-   cout << "--------------------------------" << endl;
-   cout << "Ajouter un trajet simple  - taper 1." << endl;
-   cout << "Ajouter un trajet composé - taper 2." << endl;
-   cout << "Retour au menu            - taper 0." << endl;
-   cout << "--> "; 
-   cin >> reponse;
-   cout << endl;
-
-   switch (reponse)
+   char lecture [] = {'4'};
+   while (strcmp(lecture,"0")!=0)
    {
-   case 1:
-   {
-      TrajetSimple * TS = creationTS();
-      c.Ajouter(TS);
-      
-      break;
-   }
-
-   case 2:
-   {
-      creationTC(c);
-      break;
-   }
-
-   case 0:
-   {
-      menu();
-      break;
-   }
-
-   default:
-   {
-      cout << "Réponse non reconnue." << endl;
-      menu();
-      break;
-   }
-
+      cout << "--------------------------------" << endl;
+      cout << "Ajouter un trajet simple  - taper 1." << endl;
+      cout << "Ajouter un trajet composé - taper 2." << endl;
+      cout << "Retour au menu            - taper 0." << endl;
+      cout << "--> "; 
+      cin >> lecture;
+      if (strcmp(lecture,"1")==0) {
+         TrajetSimple * TS = creationTS();
+         c.Ajouter(TS);
+      } else if (strcmp(lecture,"2")==0) {
+         creationTC(c);
+      }
    }
 }
 
 void menu ()
 {
-   bool appActive = true;
-   int reponse;
+   char lecture [] = {'4'};
    Catalogue c;
-
-
-   while(appActive)
+   
+   while (strcmp(lecture,"0")!=0)
    {
       cout << "--------------------------------" << endl;
       cout << "Afficher le catalogue - taper 1." << endl;
@@ -125,30 +78,17 @@ void menu ()
       cout << "Recherche un trajet   - taper 3." << endl;
       cout << "Quitter               - taper 0." << endl;
       cout << "--> "; 
-      cin >> reponse;
-      cout << endl;
-      
-      switch (reponse)
-      {
-      case 1:
-      {
+      cin >> lecture;
+      if (strcmp(lecture,"1")==0) {
          c.Afficher();
-         break;
-      }
-
-      case 2:
-      {
+      } else if (strcmp(lecture,"2")==0) {
          AjoutCatalogue(c);
-         break; 
-      }
-
-      case 3:
-      {
+      } else if (strcmp(lecture,"3")==0) {
          char vd [30], va [30];
          cout << "Ville de départ ?" << endl << "--> ";
-         cin >> va;
+         cin.getline(vd,30);
          cout << "Ville d'arrivée ?" << endl << "--> ";
-         cin >> va;
+         cin.getline(va,30);
          cout << "Recherche simple : " << endl;
          c.RechercheSimple(vd, va);
       
@@ -158,21 +98,6 @@ void menu ()
          Maillon * trajetsParcourus [15];
          c.RechercheComplexe(vd, va, trajetsParcourus, 0);
          */
-         break; 
-      }
-      
-      case 0:
-      {
-         appActive = false;
-         break;
-      }
-
-      default:
-      {
-         cout << "Réponse non reconnue." << endl;
-         break;
-      }
-
       }
    }
 }
@@ -182,4 +107,3 @@ int main ()
    menu();
    return 0;
 }
-
