@@ -14,6 +14,7 @@
 #include "Trajet.h"
 #include "Liste.h"
 #include "TrajetSimple.h"
+#include "TrajetCompose.h"
 
 //------------------------------------------------------------- Constantes
 
@@ -38,16 +39,28 @@ public:
 //  Permet l'ajout dans la liste.
 // Contrat : aucun
 //
-    void Ajouter(Trajet * trajet);
+    void Ajouter(Trajet * trajet) const;
 
 // void Afficher ( );
 // Mode d'emploi :
 //  Permet d'afficher chaque Maillon du Catalogue
 // Contrat : aucun
 //
-    void Afficher();
+    void Afficher() const;
 
+// void Afficher ( );
+// Mode d'emploi :
+//  Permet d'afficher chaque Maillon du Catalogue
+// Contrat : aucun
+//
     void Sauvegarde() const;
+
+// void Afficher ( );
+// Mode d'emploi :
+//  Permet d'afficher chaque Maillon du Catalogue
+// Contrat : aucun
+//
+    void Chargement() const;
 
 // void RechercheSimple ( const char * villeD, const char * villeA );
 // Mode d'emploi :

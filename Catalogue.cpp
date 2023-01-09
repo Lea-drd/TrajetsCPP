@@ -31,7 +31,7 @@ using namespace std;
 // Algorithme :
 //{
 //} //----- Fin de Ajouter
-    void Catalogue::Ajouter(Trajet * trajet){
+    void Catalogue::Ajouter(Trajet * trajet) const{
         trajets->AddSorted(trajet);
     }
 
@@ -39,7 +39,7 @@ using namespace std;
 // Algorithme :
 //{
 //} //----- Fin de Afficher
-    void Catalogue::Afficher(){
+    void Catalogue::Afficher() const{
         int n=1;
         //cout << "Affichage de Catalogue" << endl;
         Maillon * cursMaillon = trajets->GetPremier();
@@ -54,36 +54,144 @@ using namespace std;
                 cursMaillon->GetElem()->Afficher();
                 cout << endl;
             }
-            Sauvegarde(); 
         }
         else
             cout << " -- Le catalogue est vide -- " << endl << endl;
         
     }
-
+// void Catalogue::Sauvegarde ( )
+// Algorithme :
+//{
+//} //----- Fin de Sauvegarde
     void Catalogue::Sauvegarde() const{
-        //penser à demander le nom du fichier après !!!!
+    // Choix du types d'enregistrement
+        char lecture [] = {'3'};
+        int cdtType = 2;
+        while (strcmp(lecture,"0")!=0)
+        {
+            cout << "Enregistrer :" << endl;
+            cout << " tous les trajets     - taper 0." << endl;
+            cout << " les trajets simples  - taper 1." << endl;
+            cout << " les trajets composés - taper 2." << endl;
+            cout << "--> "; 
+            cin >> lecture;
+            if (strcmp(lecture,"1")==0) {
+                cdtType = 1; // On veut pas le type 1, soit pas de trajets composés
+                lecture[0] = '0';
+            }else if (strcmp(lecture,"2")==0) {
+                cdtType = 0; // On veut pas le type 0, soit pas de trajets simples
+                lecture[0] = '0';
+            }
+        }
+
+    // Choix du nom du fichier
+        char nomFichier [30] = "";
+        cout << "Taper 0 pour quitter." << endl;
+        cout << "Nom du fichier ? (sans extension) --> ";
+        cin.ignore();
+        cin.getline(nomFichier, 30);
+        cout << endl;
+        nomFichier[0] == '\0' ? strcat(nomFichier, "sauvegarde.txt") : strcat(nomFichier, ".txt");
+    
+        if(strcmp(nomFichier, "0.txt")==0) return;
+
+    // Enregistrement des trajets
         ofstream fic;
         int n=1;
-        //cout << "Affichage de Catalogue" << endl;
         Maillon * cursMaillon = trajets->GetPremier();
         if(cursMaillon!=nullptr){
-            const char * ficN = "sauvegarde.txt";
-            fic.open (ficN);
-            fic << cursMaillon->GetElem()->GetType() << endl;
-            fic << cursMaillon->GetElem()->GetVilleD() << "//" << cursMaillon->GetElem()->GetVilleA();
+            const char * ficN = nomFichier;
+        // Reset du fichier quelque soit l'enregistrement voulu
+            fic.open(ficN, ios_base::trunc);
             fic.close();
-            cursMaillon->GetElem()->SauvegarderTrajet(ficN);
+            if(cursMaillon->GetElem()->GetType() != cdtType){
+                fic.open(ficN);
+                fic << cursMaillon->GetElem()->GetType() << endl;
+                fic << cursMaillon->GetElem()->GetVilleD() << "#" << cursMaillon->GetElem()->GetVilleA() << endl;
+                fic.close();
+                cursMaillon->GetElem()->SauvegarderTrajet(ficN);
+            }           
+            
             while(cursMaillon->GetNext()!=nullptr){
                 ++n;
                 cursMaillon=cursMaillon->GetNext();
-                fic.open (ficN, std::ios_base::app);
-                fic << cursMaillon->GetElem()->GetType() << endl;
-                fic << cursMaillon->GetElem()->GetVilleD() << "//" << cursMaillon->GetElem()->GetVilleA() << endl;
-                fic.close();
-                cursMaillon->GetElem()->SauvegarderTrajet(ficN);
+                if(cursMaillon->GetElem()->GetType() != cdtType){
+                    fic.open(ficN, ios_base::app);
+                    fic << cursMaillon->GetElem()->GetType() << endl;
+                    fic << cursMaillon->GetElem()->GetVilleD() << "#" << cursMaillon->GetElem()->GetVilleA() << endl;
+                    fic.close();
+                    cursMaillon->GetElem()->SauvegarderTrajet(ficN);
+                }
             } 
         }
+        cout << "Enregistrement effectué dans " << nomFichier << endl;
+    }
+
+// void Catalogue::Chargement ( )
+// Algorithme :
+//{
+//} //----- Fin de Chargement
+    void Catalogue::Chargement() const{
+
+        int n=1;
+    // Choix du nom du fichier
+        ifstream fic;
+        const char * ficN;
+        
+        ficN = "simple.txt";
+        fic.open(ficN, ios_base::in);
+
+        //do
+      //  {
+   //         cout << "____ FICHIER INCOMPATIBLE ____" << ficN << endl;
+     //       cout << "Taper 0 pour quitter." << endl;
+    //        cout << "Nom du fichier ? (sans extension) --> ";
+     //       cin.ignore();
+   //         cin.getline(nomFichier, 30);
+    //        if(strcmp(nomFichier, "0")==0) return;
+    //        strcat(nomFichier, ".txt");
+     //       ficN = nomFichier;
+      //      fic.open(ficN, ios_base::in);
+   //     } while (!fic);
+
+ //       if(strcmp(nomFichier, "0")==0) return;
+
+    // Lecture du fichier
+        char line [30];
+        while(!fic.eof())
+        {
+            ++n;
+            fic.getline(line, 30);
+            cout << line;
+            if(line[0] == '0')
+            {
+                fic.ignore(30, '\n');
+                char vd [30], va [30], transport [30];
+                fic.getline(vd, 30, '#');
+                fic.getline(va, 30, '#');
+                fic.getline(transport, 30);
+                cout << vd << va << transport << endl;
+                TrajetSimple * TS = new TrajetSimple(vd, va, transport);
+                
+                Ajouter(TS);
+                
+            }/*
+            else if(c=='1')
+            {
+                fic.ignore(30, '\n');
+                TrajetCompose * TC = new TrajetCompose();
+                while(fic.peek() != 48 && fic.peek() != 49){ // ASCII pour 0 et 1
+                    char vd [30], va [30], transport [30];
+                    fic.getline(vd, 30, '#');
+                    fic.getline(va, 30, '#');
+                    fic.getline(transport, 30, '\n');
+                    TrajetSimple * TS = new TrajetSimple(vd, va, transport);
+                    TC->AddStep(TS);
+                }
+                Ajouter(TC);
+            }*/
+        }
+        cout << "Chargement effectué depuis " << ficN << endl;
     }
 
 // void Catalogue::RechercheSimple ( const char * villeD, const char * villeA )
@@ -103,11 +211,7 @@ using namespace std;
                 ++nbT;
                 cout << "["<< nbT << "] ";
                 // A voir si c'est necessaire de laisser .GetType 
-                if(curseur->GetElem()->GetType()==0){
-                    cout << "Trajet simple  : ";
-                }else{
-                    cout << "Trajet composé : ";
-                }
+                curseur->GetElem()->GetType()==0 ? cout << "Trajet simple  : " : cout << "Trajet composé : ";
                 curseur->GetElem()->Afficher();
                 cout << endl;
             }

@@ -49,12 +49,12 @@ void Liste::SauvegarderEtape(const char * ficN) const
 
     Maillon * cursMaillon = premierMaillon;
     if(cursMaillon!=nullptr){
-        fic << cursMaillon->GetElem()->GetVilleD() << "//" << cursMaillon->GetElem()->GetVilleA() << "//" << cursMaillon->GetElem()->GetTransport() << endl;
+        fic << cursMaillon->GetElem()->GetVilleD() << "#" << cursMaillon->GetElem()->GetVilleA() << "#" << cursMaillon->GetElem()->GetTransport() << endl;
         
     }
     while(cursMaillon->GetNext()!=nullptr){
         cursMaillon=cursMaillon->GetNext();
-        fic << cursMaillon->GetElem()->GetVilleD() << "//" << cursMaillon->GetElem()->GetVilleA() << "//" << cursMaillon->GetElem()->GetTransport() << endl;
+        fic << cursMaillon->GetElem()->GetVilleD() << "#" << cursMaillon->GetElem()->GetVilleA() << "#" << cursMaillon->GetElem()->GetTransport() << endl;
     } 
 }
 
@@ -103,7 +103,7 @@ void Liste::AddSorted(const Trajet * trajet){
     }
 
     Maillon * curseur = premierMaillon;
-    Maillon * curseurPrec = nullptr;
+    Maillon * curseurPrec = premierMaillon;
 
     while(curseur != dernierMaillon){
 
@@ -112,7 +112,7 @@ void Liste::AddSorted(const Trajet * trajet){
         if(strcmp(curseur->GetElem()->GetVilleD(), trajet->GetVilleD())==0){
 
             //La première ville est à échanger
-            while(strcmp(curseur->GetElem()->GetVilleD(), trajet->GetVilleD())==0){
+            while(curseur != dernierMaillon && strcmp(curseur->GetElem()->GetVilleD(), trajet->GetVilleD())==0){
                 if(strcmp(curseur->GetElem()->GetVilleA(), trajet->GetVilleA())>0){
                     curseurPrec->SetNext(leMaillon);
                     leMaillon->SetNext(curseur);

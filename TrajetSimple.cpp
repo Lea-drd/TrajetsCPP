@@ -38,7 +38,7 @@ void TrajetSimple::SauvegarderTrajet(const char * ficN) const
     {
         ofstream fic;
         fic.open(ficN, std::ios_base::app);
-        fic << GetVilleD() << "//" << GetVilleA() << "//" << GetTransport() << endl;
+        fic << GetVilleD() << "#" << GetVilleA() << "#" << GetTransport() << endl;
         fic.close();
     }
 

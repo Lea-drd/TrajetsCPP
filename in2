@@ -3,25 +3,26 @@
 A
 B
 T
-2
 1
 B
 D
 T
-2
 1
 C
 D
 T
-2
 1
 B
 C
 T
+0
 3
 A
 D
 1
+4
+0
+tous2
 0
 
 
@@ -31,3 +32,4 @@ C D
 B C
 ON CHERCHE A D
 AFFICHE
+ENREGISTRE

@@ -3,22 +3,18 @@
 A
 B
 T1
-2
 1
 B
 C
 T2
-2
 1
 A
 V
 T1
-2
 1
 A
 C
 T1
-2
 2
 V
 Z
@@ -32,12 +28,14 @@ B
 C
 T4
 0
-2
 1
 A
 D
 T5
-2
+1
+B
+A
+T3
 2
 A
 C
@@ -47,15 +45,28 @@ C
 B
 T4
 0
-2
 1
 C
 B
 T2
-3
+1
 A
 C
+T5
+0
+3
+A
+B
 1
+4
+0
+tous1
+4
+1
+simple
+4
+2
+compose
 0
 
 
@@ -65,7 +76,10 @@ A V T1
 A C T1
 V C     V Z T3 - Z B T2 - B C T4
 A D T5
+B A T3
 A B     A C T3 - C B T4
 C B T2
+A C T5
 RECHERCHE A B
 AFFICHE
+ENREGISTRE
