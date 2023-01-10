@@ -38,7 +38,6 @@ using namespace std;
 // void Catalogue::Afficher ( )
 // Algorithme :
 //{
-//} //----- Fin de Afficher
     void Catalogue::Afficher() const{
         int n=1;
         //cout << "Affichage de Catalogue" << endl;
@@ -59,10 +58,11 @@ using namespace std;
             cout << " -- Le catalogue est vide -- " << endl << endl;
         
     }
+//} //----- Fin de Afficher
+
 // void Catalogue::Sauvegarde ( )
 // Algorithme :
 //{
-//} //----- Fin de Sauvegarde
     void Catalogue::Sauvegarde() const{
     // Choix du types d'enregistrement
         char lecture [] = {'3'};
@@ -124,47 +124,66 @@ using namespace std;
                 }
             } 
         }
-        cout << "Enregistrement effectué dans " << nomFichier << endl;
+        cout << "Enregistrement de " << n << " trajets, effectué dans " << nomFichier << endl;
     }
+//} //----- Fin de Sauvegarde
 
 // void Catalogue::Chargement ( )
 // Algorithme :
 //{
-//} //----- Fin de Chargement
     void Catalogue::Chargement() const{
 
-        int n=1;
+        int n=0;
+
+    // Choix du types de chargement
+        char lecture [] = {'3'};
+        char cdtType = '2';
+        while (strcmp(lecture,"0")!=0)
+        {
+            cout << "Charger :" << endl;
+            cout << " tous les trajets     - taper 0." << endl;
+            cout << " les trajets simples  - taper 1." << endl;
+            cout << " les trajets composés - taper 2." << endl;
+            cout << "--> "; 
+            cin >> lecture;
+            if (strcmp(lecture,"1")==0) {
+                cdtType = '1'; // On veut pas le type 1, soit pas de trajets composés
+                lecture[0] = '0';
+            }else if (strcmp(lecture,"2")==0) {
+                cdtType = '0'; // On veut pas le type 0, soit pas de trajets simples
+                lecture[0] = '0';
+            }
+        }
+
     // Choix du nom du fichier
         ifstream fic;
         const char * ficN;
-        
+        char nomFichier [30] = "";
         ficN = "simple.txt";
-        fic.open(ficN, ios_base::in);
 
-        //do
-      //  {
-   //         cout << "____ FICHIER INCOMPATIBLE ____" << ficN << endl;
-     //       cout << "Taper 0 pour quitter." << endl;
-    //        cout << "Nom du fichier ? (sans extension) --> ";
-     //       cin.ignore();
-   //         cin.getline(nomFichier, 30);
-    //        if(strcmp(nomFichier, "0")==0) return;
-    //        strcat(nomFichier, ".txt");
-     //       ficN = nomFichier;
-      //      fic.open(ficN, ios_base::in);
-   //     } while (!fic);
+        do
+        {
+            cout << "Taper 0 pour quitter." << endl;
+            cout << "Nom du fichier ? (sans extension) --> ";
+            cin.ignore();
+            cin.getline(nomFichier, 30);
+            if (strcmp(nomFichier, "0")==0) return;
+            strcat(nomFichier, ".txt");
+            ficN = nomFichier;
+            fic.open(ficN, ios_base::in);
+            if (!fic) cout << "____ FICHIER " << ficN << " INCOMPATIBLE ____"  << endl;
+        } while (!fic);
 
- //       if(strcmp(nomFichier, "0")==0) return;
+       if(strcmp(ficN, "0")==0) return;
 
     // Lecture du fichier
         char line [30];
         while(!fic.eof())
         {
-            ++n;
             fic.getline(line, 30);
-            cout << line;
-            if(line[0] == '0')
+            if(line[0] == '0' && line[0] != cdtType)
             {
+                ++n;
                 fic.ignore(30, '\n');
                 char vd [30], va [30], transport [30];
                 fic.getline(vd, 30, '#');
@@ -175,9 +194,10 @@ using namespace std;
                 
                 Ajouter(TS);
                 
-            }/*
-            else if(c=='1')
+            }
+            else if(line[0] == '1' && line[0] != cdtType)
             {
+                ++n;
                 fic.ignore(30, '\n');
                 TrajetCompose * TC = new TrajetCompose();
                 while(fic.peek() != 48 && fic.peek() != 49){ // ASCII pour 0 et 1
@@ -189,17 +209,17 @@ using namespace std;
                     TC->AddStep(TS);
                 }
                 Ajouter(TC);
-            }*/
+            }
         }
-        cout << "Chargement effectué depuis " << ficN << endl;
+        cout << "Chargement de " << n << " trajets, effectué depuis " << ficN << endl;
     }
+//} //----- Fin de Chargement
 
 // void Catalogue::RechercheSimple ( const char * villeD, const char * villeA )
 // Algorithme :
 //  Parcours toute la liste de trajets
 //  On affiche toutes les solutions, la ville de départ et d'arrivée demandées correspondent au trajet
 //{
-//} //----- Fin de RechercheSimple
     void Catalogue::RechercheSimple(const char * villeD, const char * villeA){
         Maillon * curseur = trajets->GetPremier();
         int nbT = 0;
@@ -221,6 +241,7 @@ using namespace std;
             cout << "Pas de trajet trouvé. " << endl << endl;
         }
     }
+//} //----- Fin de RechercheSimple
 
 // void Catalogue::RechercheComplexe ( const char * villeD, const char * villeA )
 // Algorithme :
@@ -230,7 +251,7 @@ using namespace std;
 //  Si la ville de départ et d'arrivée correspond on a une solution
 //  Sinon on prend la ville d'arrivée comme ville de départ et on fait une recursivité
 //  L'affichage est supposé se faire en appelant un tableau de Maillon qui contient le chemin passé !Ne fonctionne pas
-//} //----- Fin de RechercheComplexe
+
     void Catalogue::RechercheComplexe(const char * villeD, const char * villeA, Maillon * trajetsRecursif [], int nbTrajetsRecursifs)
     {
         int i;
@@ -277,9 +298,8 @@ using namespace std;
                 trajetsRecursif[nbTrajetsRecursifs] = nullptr;
             }
         }
-
     }  
-    
+//} //----- Fin de RechercheComplexe   
     
 
 
